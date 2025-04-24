@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coquito il Tamborilito Stickers</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body class="bg-yellow-50 font-sans">
+
+  <header class="bg-yellow-200 p-4 shadow-md">
+    <h1 class="text-3xl font-bold text-center">Coquito il Tamborilito Stickers</h1>
+  </header>
+
+  <main class="p-6 max-w-4xl mx-auto">
+    <!-- Producto -->
+    <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-10">
+      <img src="public/coquito.PNG" alt="Coquito Sticker" class="w-full h-64 object-contain" />
+      <div class="p-4">
+        <h2 class="text-xl font-bold">Coquito Classic Sticker</h2>
+        <p class="text-gray-600 mt-2">Sticker de vinil brillante y duradero. Tamaño 3x3 pulgadas.</p>
+        <p class="mt-4 font-bold text-lg">$3.00 USD</p>
+        <button
+          id="checkout-button"
+          class="mt-2 bg-yellow-300 hover:bg-yellow-400 text-black font-semibold py-2 px-4 rounded w-full">
+          Comprar ahora
+        </button>
+      </div>
+    </div>
+
+    <!-- Políticas requeridas por Stripe -->
+    <section class="bg-white p-4 rounded-xl shadow">
+      <h3 class="text-xl font-bold">Política de envío y reembolso</h3>
+      <p class="text-gray-600 mt-2 text-sm">
+        Todos los stickers se envían dentro de 10 a 12 días laborables por correo regular a Puerto Rico y Estados Unidos. No se aceptan devoluciones a menos que el producto llegue dañado. Si ocurre un problema, contáctanos dentro de los primeros 7 días posteriores a la entrega.
+      </p>
+
+      <h3 class="text-xl font-bold mt-6">Política de privacidad</h3>
+      <p class="text-gray-600 mt-2 text-sm">
+        Tu información personal solo se utiliza para procesar tu orden. No compartimos tus datos con terceros.
+      </p>
+
+      <h3 class="text-xl font-bold mt-6">Restricciones de envío</h3>
+      <p class="text-gray-600 mt-2 text-sm">
+        Actualmente solo realizamos envíos dentro de Puerto Rico y los Estados Unidos.
+      </p>
+    </section>
+  </main>
+
+  <footer class="bg-yellow-200 text-center p-6 mt-10 text-sm text-gray-700">
+    <p>&copy; 2025 Coquito il Tamborilito. Todos los derechos reservados.</p>
+    <p class="mt-2">¿Tienes preguntas? Escríbenos a: <a href="mailto:alesito787stickers@gmail.com" class="underline">alesito787stickers@gmail.com</a></p>
+  </footer>
+
+  <script>
+    const stripe = Stripe("YOUR_STRIPE_PUBLISHABLE_KEY");
+
+    document.getElementById("checkout-button").addEventListener("click", function () {
+      stripe.redirectToCheckout({
+        lineItems: [{ price: "YOUR_STRIPE_PRICE_ID", quantity: 1 }],
+        mode: "payment",
+        successUrl: window.location.href + "?success=true",
+        cancelUrl: window.location.href + "?canceled=true"
+      }).then(function (result) {
+        if (result.error) {
+          alert(result.error.message);
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
