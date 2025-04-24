@@ -54,11 +54,11 @@
   </footer>
 
   <script>
-    const stripe = Stripe("YOUR_STRIPE_PUBLISHABLE_KEY");
+    const stripe = Stripe("pk_live_51RHDVm1GZZfnqQMen0aRxcyvPO6UVYGBDufHiUqkJHQSffT2oP6MdCPouFZ0rmu2nCu6HgZslo3AM3wIuRNPXAH000dHvG6DCj");
 
     document.getElementById("checkout-button").addEventListener("click", function () {
       stripe.redirectToCheckout({
-        lineItems: [{ price: "YOUR_STRIPE_PRICE_ID", quantity: 1 }],
+        lineItems: [{ price: "price_1RHG6g1GZZfnqQMeGPhgvjkM", quantity: 1 }],
         mode: "payment",
         successUrl: window.location.href + "?success=true",
         cancelUrl: window.location.href + "?canceled=true"
