@@ -54,21 +54,58 @@
   </footer>
 
   <script>
-    const stripe = Stripe("pk_test_51RHDW0P1eUzwGdrqUpKHyRyAtWpdV00YaSpZoCgeg8M88xSRVpfuv8q4KunNq4RfAyfA9xNBVprjtPLj0TRFNZUN003dd2vGGz");
-
-    document.getElementById("checkout-button").addEventListener("click", function () {
-      stripe.redirectToCheckout({
-        lineItems: [{ price: "price_1RHEv2P1eUzwGdrqGSVkDZJA", quantity: 1 }],
-        mode: "payment",
-        successUrl: window.location.href + "?success=true",
-        cancelUrl: window.location.href + "?canceled=true"
-      }).then(function (result) {
-        if (result.error) {
-          alert(result.error.message);
-        }
+    const stripe = Stripe("pk_live_51RHDVm1GZZfnqQMen0aRxcyvPO6UVYGBDufHiUqkJHQSffT2oP6MdCPouFZ0rmu2nCu6HgZslo3AM3wIuRNPXAH000dHvG6DCj");
+    const maxOrders = 100;
+    const button = document.getElementById("checkout-button");
+    const message = document.getElementById("stock-message");
+    const emailInput = document.getElementById("customer-email");
+    const sheetEndpoint = "https://script.google.com/macros/s/AKfycbzFM__CDAcD5iIpyQTuZhqqB5iBoPQqkv8mygI0cD7i6f-ZHEsRMoJHhc6Xw6G0rgd3/exec";
+  
+    function updateStockStatus(totalOrders) {
+      if (totalOrders >= maxOrders) {
+        button.disabled = true;
+        button.classList.add("opacity-50", "cursor-not-allowed");
+        message.classList.remove("hidden");
+      }
+    }
+  
+    fetch(sheetEndpoint)
+      .then(response => response.json())
+      .then(data => {
+        let totalOrders = data.totalOrders || 0;
+        updateStockStatus(totalOrders);
+  
+        button.addEventListener("click", function () {
+          if (totalOrders < maxOrders) {
+            const customerEmail = emailInput.value.trim();
+            if (!customerEmail) {
+              alert("Por favor ingresa tu correo electrónico.");
+              return;
+            }
+  
+            stripe.redirectToCheckout({
+              lineItems: [{ price: "price_1RHG6g1GZZfnqQMeGPhgvjkM", quantity: 1 }],
+              mode: "payment",
+              successUrl: window.location.href + "?success=true",
+              cancelUrl: window.location.href + "?canceled=true",
+              customerEmail: customerEmail,
+              shippingAddressCollection: {
+                allowedCountries: ['US', 'PR']
+              }
+            }).then(function (result) {
+              if (result.error) {
+                alert(result.error.message);
+              } else {
+                fetch(sheetEndpoint, {
+                  method: "POST"
+                });
+              }
+            });
+          }
+        });
       });
-    });
   </script>
+  
 
 </body>
 </html>
