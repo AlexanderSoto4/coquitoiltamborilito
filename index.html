@@ -1,3 +1,8 @@
+Perfecto. A continuación te paso una versión revisada del HTML completo, asegurándome de que:
+	•	El input de correo electrónico esté presente.
+	•	El script se ejecute después de que el DOM haya cargado.
+	•	Se corrija el acceso a .value para evitar errores si el input no existe.
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -19,27 +24,36 @@
         <h2 class="text-xl font-bold">Coquito Classic Sticker</h2>
         <p class="text-gray-600 mt-2">Sticker de vinil brillante y duradero. Tamaño 3x3 pulgadas.</p>
         <p class="mt-4 font-bold text-lg">$3.00 USD</p>
-
-        <!-- Input de correo electrónico -->
         <input type="email" id="customer-email" placeholder="Tu correo electrónico" class="w-full mt-2 p-2 border rounded" required>
-
-        <!-- Botón de pago -->
-        <button id="checkout-button" class="mt-2 bg-yellow-300 hover:bg-yellow-400 text-black font-semibold py-2 px-4 rounded w-full">
+        <button
+          id="checkout-button"
+          class="mt-2 bg-yellow-300 hover:bg-yellow-400 text-black font-semibold py-2 px-4 rounded w-full">
           Comprar ahora
         </button>
-
         <p id="stock-message" class="text-red-600 font-semibold text-center mt-2 hidden">¡Producto agotado!</p>
       </div>
     </div>
+
+    <section class="bg-white p-4 rounded-xl shadow">
+      <h3 class="text-xl font-bold">Política de envío y reembolso</h3>
+      <p class="text-gray-600 mt-2 text-sm">
+        Todos los stickers se envían dentro de 10 a 12 días laborables por correo regular a Puerto Rico y Estados Unidos. No se aceptan devoluciones a menos que el producto llegue dañado. Si ocurre un problema, contáctanos dentro de los primeros 7 días posteriores a la entrega.
+      </p>
+    </section>
   </main>
 
+  <footer class="bg-yellow-200 text-center p-6 mt-10 text-sm text-gray-700">
+    <p>&copy; 2025 Coquito il Tamborilito. Todos los derechos reservados.</p>
+    <p class="mt-2">¿Tienes preguntas? Escríbenos a: <a href="mailto:coquitostickers@gmail.com" class="underline">coquitostickers@gmail.com</a></p>
+  </footer>
+
   <script>
-    const stripe = Stripe("pk_live_TU_CLAVE_PUBLICABLE");
+    const stripe = Stripe("pk_live_..."); // tu clave pública de Stripe
     const maxOrders = 100;
     const button = document.getElementById("checkout-button");
     const message = document.getElementById("stock-message");
     const emailInput = document.getElementById("customer-email");
-    const sheetEndpoint = "https://script.google.com/macros/s/TU_ENDPOINT/exec";
+    const sheetEndpoint = "https://script.google.com/macros/s/AKfycbz.../exec"; // tu URL real
 
     function updateStockStatus(totalOrders) {
       if (totalOrders >= maxOrders) {
@@ -50,24 +64,25 @@
     }
 
     fetch(sheetEndpoint)
-      .then(response => response.json())
+      .then(res => res.json())
       .then(data => {
         let totalOrders = data.totalOrders || 0;
         updateStockStatus(totalOrders);
 
         button.addEventListener("click", function () {
+          if (!emailInput) return alert("Campo de email no disponible.");
           const customerEmail = emailInput.value.trim();
-          if (!customerEmail) {
-            alert("Por favor ingresa tu correo electrónico.");
-            return;
-          }
+          if (!customerEmail) return alert("Por favor ingresa tu correo electrónico.");
 
           stripe.redirectToCheckout({
-            lineItems: [{ price: "price_TU_PRICE_ID", quantity: 1 }],
+            lineItems: [{ price: "price_1RHG6g1GZZfnqQMeGPhgvjkM", quantity: 1 }],
             mode: "payment",
             successUrl: window.location.href + "?success=true",
             cancelUrl: window.location.href + "?canceled=true",
-            customerEmail: customerEmail
+            customerEmail: customerEmail,
+            shippingAddressCollection: {
+              allowedCountries: ['US', 'PR']
+            }
           }).then(function (result) {
             if (result.error) {
               alert(result.error.message);
@@ -80,3 +95,5 @@
   </script>
 </body>
 </html>
+
+Confírmame si este código te funciona correctamente o si quieres que lo subamos al repositorio.
