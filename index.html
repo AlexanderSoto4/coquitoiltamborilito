@@ -19,8 +19,8 @@
       <img src="public/coquito.PNG" alt="Coquito Sticker" class="w-full h-64 object-contain" />
       <div class="p-4">
         <h2 class="text-xl font-bold">Coquito Classic Sticker</h2>
-        <p class="text-gray-600 mt-2">Sticker de vinil con imagen de alta resolución, duradero y aprueba de agua. Tamaño 3x2 pulgadas.</p>
-        <p class="mt-4 font-bold text-lg">$4.99 USD</p>
+        <p class="text-gray-600 mt-2">Sticker de vinil brillante y duradero. Tamaño 3x3 pulgadas.</p>
+        <p class="mt-4 font-bold text-lg">$3.00 USD</p>
         <input type="email" id="customer-email" placeholder="Tu correo electrónico" class="w-full mt-2 p-2 border rounded" required>
         <button
           id="checkout-button"
@@ -35,7 +35,7 @@
     <section class="bg-white p-4 rounded-xl shadow">
       <h3 class="text-xl font-bold">Política de envío y reembolso</h3>
       <p class="text-gray-600 mt-2 text-sm">
-        Todos los stickers se envían dentro de 10 a 12 días laborables por correo regular a Puerto Rico y Estados Unidos. No se aceptan devoluciones a menos que el producto llegue dañado. Si ocurre un problema, contáctanos dentro de los primeros 7 días posteriores a la entrega.
+        Todos los stickers se envían dentro de 3 a 5 días laborables por correo regular a Puerto Rico y Estados Unidos. No se aceptan devoluciones a menos que el producto llegue dañado. Si ocurre un problema, contáctanos dentro de los primeros 7 días posteriores a la entrega.
       </p>
 
       <h3 class="text-xl font-bold mt-6">Política de privacidad</h3>
@@ -88,7 +88,7 @@
             stripe.redirectToCheckout({
               lineItems: [{ price: "price_1RHXuY1GZZfnqQMeNkVGTq0g", quantity: 1 }],
               mode: "payment",
-              successUrl: window.location.href + "?success=true",
+              successUrl: window.location.origin + "/success.html?email=" + encodeURIComponent(customerEmail),
               cancelUrl: window.location.href + "?canceled=true",
               customerEmail: customerEmail,
               shippingAddressCollection: {
@@ -97,10 +97,6 @@
             }).then(function (result) {
               if (result.error) {
                 alert(result.error.message);
-              } else {
-                fetch(sheetEndpoint, {
-                  method: "POST"
-                });
               }
             });
           }
