@@ -19,7 +19,7 @@
       <img src="public/coquito.PNG" alt="Coquito Sticker" class="w-full h-64 object-contain" />
       <div class="p-4">
         <h2 class="text-xl font-bold">Coquito Classic Sticker</h2>
-        <p class="text-gray-600 mt-2">Sticker de vinil brillante y duradero. Tamaño 3x3 pulgadas.</p>
+        <p class="text-gray-600 mt-2">Sticker de vinil brillante y duradero. Tamaño 3x2 pulgadas.</p>
         <p class="mt-4 font-bold text-lg">$4.99 USD</p>
         <input type="email" id="customer-email" placeholder="Tu correo electrónico" class="w-full mt-2 p-2 border rounded" required>
         <button
@@ -88,7 +88,7 @@
             stripe.redirectToCheckout({
               lineItems: [{ price: "price_1RHXuY1GZZfnqQMeNkVGTq0g", quantity: 1 }],
               mode: "payment",
-              successUrl: window.location.origin + "/success.html?email=" + encodeURIComponent(customerEmail),
+              successUrl: window.location.origin + "/?success=true&email=" + encodeURIComponent(customerEmail),
               cancelUrl: window.location.href + "?canceled=true",
               customerEmail: customerEmail,
               shippingAddressCollection: {
