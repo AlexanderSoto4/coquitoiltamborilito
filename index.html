@@ -6,8 +6,8 @@
   
   <title>787Stickers</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <script src="https://js.stripe.com/v3/"></script>
 </head>
+
 <body class="bg-yellow-50 font-sans">
 
   <header class="bg-yellow-200 p-4 shadow-md">
@@ -22,11 +22,13 @@
         <h2 class="text-xl font-bold">Coquito Classic Sticker</h2>
         <p class="text-gray-600 mt-2">Sticker de vinil brillante y duradero. Tamaño 3x2 pulgadas.</p>
         <p class="mt-4 font-bold text-lg">$4.99 USD</p>
-        <input type="email" id="customer-email" placeholder="Tu correo electrónico" class="w-full mt-2 p-2 border rounded" required>
-        <a href="https://buy.stripe.com/8wM18b00ucDu6zK7ss" class="bg-yellow-300 hover:bg-yellow-400 text-black font-bold py-2 px-4 rounded" target="_blank" rel="noopener noreferrer">
+
+        <a href="https://buy.stripe.com/8wM18b00ucDu6zK7ss" 
+           class="bg-yellow-300 hover:bg-yellow-400 text-black font-bold py-2 px-4 rounded block text-center mt-4"
+           target="_blank" rel="noopener noreferrer">
           Comprar ahora
         </a>
-        <p id="stock-message" class="text-red-600 font-semibold text-center mt-2 hidden">¡Producto agotado!</p>
+
       </div>
     </div>
 
@@ -53,55 +55,6 @@
     <p>&copy; 2025 Coquito il Tamborilito. Todos los derechos reservados.</p>
     <p class="mt-2">¿Tienes preguntas? Escríbenos a: <a href="mailto:alex787stickers@gmail.com" class="underline">alex787stickers@gmail.com</a></p>
   </footer>
-
-  <script>
-    const stripe = Stripe("pk_live_51RHDVm1GZZfnqQMen0aRxcyvPO6UVYGBDufHiUqkJHQSffT2oP6MdCPouFZ0rmu2nCu6HgZslo3AM3wIuRNPXAH000dHvG6DCj");
-    const maxOrders = 100;
-    const button = document.getElementById("checkout-button");
-    const message = document.getElementById("stock-message");
-    const emailInput = document.getElementById("customer-email");
-    const sheetEndpoint = "https://script.google.com/macros/s/AKfycbzFM__CDAcD5iIpyQTuZhqqB5iBoPQqkv8mygI0cD7i6f-ZHEsRMoJHhc6Xw6G0rgd3/exec";
-
-    function updateStockStatus(totalOrders) {
-      if (totalOrders >= maxOrders) {
-        button.disabled = true;
-        button.classList.add("opacity-50", "cursor-not-allowed");
-        message.classList.remove("hidden");
-      }
-    }
-
-    fetch(sheetEndpoint)
-      .then(response => response.json())
-      .then(data => {
-        let totalOrders = data.totalOrders || 0;
-        updateStockStatus(totalOrders);
-
-        button.addEventListener("click", function () {
-          if (totalOrders < maxOrders) {
-            const customerEmail = emailInput.value.trim();
-            if (!customerEmail) {
-              alert("Por favor ingresa tu correo electrónico.");
-              return;
-            }
-
-            stripe.redirectToCheckout({
-              lineItems: [{ price: "price_1RHXuY1GZZfnqQMeNkVGTq0g", quantity: 1 }],
-              mode: "payment",
-              successUrl: window.location.origin + "/?success=true&email=" + encodeURIComponent(customerEmail),
-              cancelUrl: window.location.href + "?canceled=true",
-              customerEmail: customerEmail,
-              shippingAddressCollection: {
-                allowedCountries: ['US', 'PR']
-              }
-            }).then(function (result) {
-              if (result.error) {
-                alert(result.error.message);
-              }
-            });
-          }
-        });
-      });
-  </script>
 
 </body>
 </html>
