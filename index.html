@@ -1,33 +1,33 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
-<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <title>787 Roots</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body class="bg-#00bfff-50 font-sans">
+<body class="bg-blue-50 font-sans">
 
-  <header class="bg-DeepSkyBlue-200 p-4 shadow-md">
+  <header class="bg-blue-200 p-4 shadow-md">
     <div class="flex md:flex-row items-center justify-center">
       <img src="public/787stckrweb.PNG" alt="787 Stickers logo" class="h-20 w-auto object-contain" />
       <h1 class="text-3xl font-bold mt-0 ml-0">ROOTS</h1>
     </div>
   </header>
-  
-  
 
   <main class="p-6 max-w-6xl mx-auto">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      
-       <!-- Product Card -->
-       <div class="bg-white rounded-2xl shadow-lg overflow-hidden h-[550px] flex flex-col">
-        <img src="public/TSHIRTBLANCA.PNG" alt="787 Classic T-Shirt White" class="h-64 w-full object-contain" />
+
+      <!-- T-Shirt with Hover Image -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden h-[550px] flex flex-col">
+        <div class="relative h-64 w-full">
+          <img src="public/TSHIRTBLANCA.PNG" alt="Frente" class="absolute top-0 left-0 h-full w-full object-contain hover:opacity-0 transition duration-300" />
+          <img src="public/TSHIRTBLANCABACK.PNG" alt="Espalda" class="h-full w-full object-contain" />
+        </div>
         <div class="p-4 flex-grow flex flex-col justify-between">
           <div>
             <h2 class="text-xl font-bold">787 Classic T-Shirt White</h2>
@@ -45,9 +45,8 @@
           </div>
         </div>
       </div>
-  
-      
-      <!-- Product Card -->
+
+      <!-- Coquito Classic Sticker -->
       <div class="bg-white rounded-2xl shadow-lg overflow-hidden h-[550px] flex flex-col">
         <img src="public/coquito.PNG" alt="Coquito Classic Sticker" class="h-64 w-full object-contain" />
         <div class="p-4 flex-grow flex flex-col justify-between">
@@ -67,8 +66,8 @@
           </div>
         </div>
       </div>
-  
-      <!-- Repeat this card for each product -->
+
+      <!-- PFKNR Sticker -->
       <div class="bg-white rounded-2xl shadow-lg overflow-hidden h-[550px] flex flex-col">
         <img src="public/coquitopfknr.png" alt="Coquito PFKNR Sticker" class="h-64 w-full object-contain" />
         <div class="p-4 flex-grow flex flex-col justify-between">
@@ -88,8 +87,8 @@
           </div>
         </div>
       </div>
-  
-      <!-- Example of a “Coming Soon” card -->
+
+      <!-- Headphones Sticker -->
       <div class="bg-white rounded-2xl shadow-lg overflow-hidden h-[550px] flex flex-col">
         <img src="public/coquitoaudifonos.png" alt="Coquito Headphones Sticker" class="h-64 w-full object-contain" />
         <div class="p-4 flex-grow flex flex-col justify-between">
@@ -102,10 +101,10 @@
           </div>
         </div>
       </div>
-  
-      <!-- Repeat for other products... -->
-      <div class="bg-white rounded-2xl shadow-lg overflow-hidden h-[550px] flez flex-col">
-        <img src="public/787stckrweb.PNG" alt="787 Logo Sticker" class="h-64 w-full object-contain"/>
+
+      <!-- Logo Round Sticker -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden h-[550px] flex flex-col">
+        <img src="public/787stckrweb.PNG" alt="787 Logo Sticker" class="h-64 w-full object-contain" />
         <div class="p-4 flex-grow flex flex-col justify-between">
           <div>
             <h2 class="text-xl font-bold">787 Logo Round Sticker</h2>
@@ -116,34 +115,29 @@
           </div>
         </div>
       </div>
+
     </div>
   </main>
-  
-      <!-- Políticas requeridas -->
-      <section class="bg-white p-4 rounded-xl shadow">
-        <h3 class="text-xl font-bold">Política de envío y reembolso</h3>
-        <p class="text-gray-600 mt-2 text-sm">
-          Todos los stickers se envían dentro de 10 a 12 días laborables por correo regular a Puerto Rico y Estados Unidos. No se aceptan devoluciones a menos que el producto llegue dañado. Si ocurre un problema, contáctanos dentro de los primeros 7 días posteriores a la entrega.
-        </p>
-  
 
-      <h3 class="text-xl font-bold mt-6">Política de privacidad</h3>
-      <p class="text-gray-600 mt-2 text-sm">
-        Tu información personal solo se utiliza para procesar tu orden. No compartimos tus datos con terceros.
-      </p>
+  <section class="bg-white p-4 rounded-xl shadow mt-10 max-w-4xl mx-auto">
+    <h3 class="text-xl font-bold">Política de envío y reembolso</h3>
+    <p class="text-gray-600 mt-2 text-sm">
+      Todos los stickers se envían dentro de 10 a 12 días laborables por correo regular a Puerto Rico y Estados Unidos. No se aceptan devoluciones a menos que el producto llegue dañado. Si ocurre un problema, contáctanos dentro de los primeros 7 días posteriores a la entrega.
+    </p>
+    <h3 class="text-xl font-bold mt-6">Política de privacidad</h3>
+    <p class="text-gray-600 mt-2 text-sm">
+      Tu información personal solo se utiliza para procesar tu orden. No compartimos tus datos con terceros.
+    </p>
+    <h3 class="text-xl font-bold mt-6">Restricciones de envío</h3>
+    <p class="text-gray-600 mt-2 text-sm">
+      Actualmente solo realizamos envíos dentro de Puerto Rico y los Estados Unidos.
+    </p>
+  </section>
 
-      <h3 class="text-xl font-bold mt-6">Restricciones de envío</h3>
-      <p class="text-gray-600 mt-2 text-sm">
-        Actualmente solo realizamos envíos dentro de Puerto Rico y los Estados Unidos.
-      </p>
-    </section>
-  </main>
-
-  <footer class="bg-#00bfff-200 text-center p-6 mt-10 text-sm text-gray-700">
+  <footer class="bg-blue-200 text-center p-6 mt-10 text-sm text-gray-700">
     <p>&copy; 2025 787 Roots. Todos los derechos reservados.</p>
     <p class="mt-2">¿Tienes preguntas? Escríbenos a: <a href="mailto:alex787stickers@gmail.com" class="underline">alex787stickers@gmail.com</a></p>
   </footer>
 
 </body>
 </html>
-
