@@ -1,10 +1,13 @@
-why does the comprar ahora text doesnt appear in black before the hover: <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>787 Stickers</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <title>787 Roots</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
@@ -19,40 +22,80 @@ why does the comprar ahora text doesnt appear in black before the hover: <!DOCTY
   
   
 
-  <main class="p-6 max-w-4xl mx-auto">
-    <!-- Producto -->
-    <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-10">
-      <img src="public/coquito.PNG" alt="Coquito Sticker" class="w-full h-64 object-contain" />
-      <div class="p-4">
-        <h2 class="text-xl font-bold">Coquito Classic Sticker</h2>
-        <p class="text-gray-600 mt-2">Sticker de vinil brillante y duradero. Tamaño 3x2 pulgadas.</p>
-        <p class="mt-4 font-bold text-lg">$4.99 USD</p>
-
-        <div class="flex justify-center mt-4">
-          <a href="https://buy.stripe.com/8wM18b00ucDu6zK7ss" 
-             class="bg-white text-black font-bold py-2 px-6 rounded text-center hover:bg-black text-white"
-             target="_blank" rel="noopener noreferrer">
-            Comprar ahora
-          </a>
-        </div>
-      </div>
-    </div>
-
-      <main class="p-6 max-w-4xl mx-auto">
-        <!-- Producto -->
-        <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-10">
-          <img src="public/coquitoaudifonos.png" alt="Coquit Headphones Sticker" class="w-full h-64 object-contain" />
-          <div class="p-4">
-            <h2 class="text-xl font-bold">Coquito Headphones Sticker</h2>
-            <p class="text-gray-600 mt-2">Sticker de vinil brillante y duradero. Tamaño 2x2 pulgadas.</p>
-            <p class="mt-4 font-bold text-lg">$3.99 USD</p>
-    
+  <main class="p-6 max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <!-- Product Card -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden h-[550px] flex flex-col">
+        <img src="public/coquito.PNG" alt="Coquito Classic Sticker" class="h-64 w-full object-contain" />
+        <div class="p-4 flex-grow flex flex-col justify-between">
+          <div>
+            <h2 class="text-xl font-bold">Coquito Classic Sticker</h2>
+            <p class="text-gray-600 mt-2">Sticker de vinil brillante y duradero. Tamaño 3x2 pulgadas.</p>
+          </div>
+          <div>
+            <p class="mt-4 font-bold text-lg">$4.99 USD</p>
             <div class="flex justify-center mt-4">
-              <h4 class="bg-#00bfff-300 text-black font-bold py-2 px-6 rounded text-center">Coming Soon</h4>
+              <a href="https://buy.stripe.com/8wM18b00ucDu6zK7ss"
+                 class="bg-white text-black font-bold py-2 px-6 rounded text-center hover:bg-black hover:text-white"
+                 target="_blank" rel="noopener noreferrer">
+                Comprar ahora
+              </a>
             </div>
           </div>
         </div>
-    
+      </div>
+  
+      <!-- Repeat this card for each product -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden h-[550px] flex flex-col">
+        <img src="public/coquitopfknr.png" alt="Coquito PFKNR Sticker" class="h-64 w-full object-contain" />
+        <div class="p-4 flex-grow flex flex-col justify-between">
+          <div>
+            <h2 class="text-xl font-bold">Coquito PFKNR Sticker</h2>
+            <p class="text-gray-600 mt-2">Sticker de vinil brillante y duradero. Tamaño 3x2 pulgadas.</p>
+          </div>
+          <div>
+            <p class="mt-4 font-bold text-lg">$4.99 USD</p>
+            <div class="flex justify-center mt-4">
+              <a href="https://buy.stripe.com/3cs3gjeVogTKf6g7st"
+                 class="bg-white text-black font-bold py-2 px-6 rounded text-center hover:bg-black hover:text-white"
+                 target="_blank" rel="noopener noreferrer">
+                Comprar ahora
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Example of a “Coming Soon” card -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden h-[550px] flex flex-col">
+        <img src="public/coquitoaudifonos.png" alt="Coquito Headphones Sticker" class="h-64 w-full object-contain" />
+        <div class="p-4 flex-grow flex flex-col justify-between">
+          <div>
+            <h2 class="text-xl font-bold">Coquito Headphones Sticker</h2>
+            <p class="text-gray-600 mt-2">Sticker de vinil brillante y duradero. Tamaño 2x2 pulgadas.</p>
+          </div>
+          <div class="flex justify-center mt-6">
+            <h4 class="bg-gray-200 text-black font-bold py-2 px-6 rounded text-center">Coming Soon</h4>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Repeat for other products... -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden h-[550px] flez flex-col">
+        <img src="public/787stckrweb.PNG" alt="787 Logo Sticker" class="h-64 w-full object-contain"/>
+        <div class="p-4 flex-grow flex flex-col justify-between">
+          <div>
+            <h2 class="text-xl font-bold">787 Logo Round Sticker</h2>
+            <p class="text-gray-600 mt-2">Sticker de vinil brillante y duradero. Tamaño 2 pulgadas de diámetro.</p>
+          </div>
+          <div class="flex justify-center mt-6">
+            <h4 class="bg-gray-200 text-black font-bold py-2 px-6 rounded text-center">Coming Soon</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
   
       <!-- Políticas requeridas -->
       <section class="bg-white p-4 rounded-xl shadow">
@@ -75,11 +118,10 @@ why does the comprar ahora text doesnt appear in black before the hover: <!DOCTY
   </main>
 
   <footer class="bg-#00bfff-200 text-center p-6 mt-10 text-sm text-gray-700">
-    <p>&copy; 2025 Coquito el Tamborilito. Todos los derechos reservados.</p>
+    <p>&copy; 2025 787 Roots. Todos los derechos reservados.</p>
     <p class="mt-2">¿Tienes preguntas? Escríbenos a: <a href="mailto:alex787stickers@gmail.com" class="underline">alex787stickers@gmail.com</a></p>
   </footer>
 
 </body>
 </html>
-
 
