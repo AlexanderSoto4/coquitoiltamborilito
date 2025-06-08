@@ -10,32 +10,6 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<script>
-  const shirtImage = document.getElementById("shirt-image");
-
-  const originalSrc = "public/TSHIRTBLANCA.png";
-  const hoverSrc = "public/TSHIRTBLANCABACK.png";
-
-  // Desktop hover
-  shirtImage.addEventListener("mouseenter", () => {
-    shirtImage.src = hoverSrc;
-  });
-
-  shirtImage.addEventListener("mouseleave", () => {
-    shirtImage.src = originalSrc;
-  });
-
-  // Mobile tap
-  shirtImage.addEventListener("touchstart", () => {
-    shirtImage.src = hoverSrc;
-  });
-
-  shirtImage.addEventListener("touchend", () => {
-    shirtImage.src = originalSrc;
-  });
-</script>
-
-
 <body class="bg-white font-sans">
   <header class="bg-white p-4 shadow-md">
     <div class="flex md:flex-row items-center justify-center">
@@ -144,6 +118,29 @@
   </footer>
 
   <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const shirtImage = document.getElementById("shirt-image");
+
+      const originalSrc = "public/TSHIRTBLANCA.png";
+      const hoverSrc = "public/TSHIRTBLANCABACK.png";
+
+      shirtImage.addEventListener("mouseenter", () => {
+        shirtImage.src = hoverSrc;
+      });
+
+      shirtImage.addEventListener("mouseleave", () => {
+        shirtImage.src = originalSrc;
+      });
+
+      shirtImage.addEventListener("touchstart", () => {
+        shirtImage.src = hoverSrc;
+      });
+
+      shirtImage.addEventListener("touchend", () => {
+        shirtImage.src = originalSrc;
+      });
+    });
+
     const links = {
       s: 'https://buy.stripe.com/14A6oz39V9oB2Sb7gVgUM02',
       m: 'https://buy.stripe.com/5kQ28j7qb58lfEX0SxgUM03',
